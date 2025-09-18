@@ -6,7 +6,7 @@ permissions:
   contents: read
 jobs:
   build-and-deploy:
-    runs-on: self-hosted
+    runs-on: [VLABR1]
     steps:
       - name: Azure login
         uses: azure/login@v2
