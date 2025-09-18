@@ -2,7 +2,7 @@ name: DISA-STIG-Remediation-DEV
 on: workflow_dispatch
 jobs:
   my-job:
-    runs-on: self-hosted
+    runs-on: [VLABR1]
     steps:
       - name: my-step
         run: echo "Hello World!" 
