@@ -1,8 +1,29 @@
 name: DISA-STIG-Remediation-DEV
-on: workflow_dispatch
+
+on:
+  push:
+    branches: [ dev ]
+  workflow_dispatch:
+  
 jobs:
   my-job:
     runs-on: [VLABR1]
     steps:
       - name: my-step
         run: echo "Hello World!" 
+
+  run-powershell:
+    runs-on: [VLABR1]
+    defaults:
+      run:
+        shell: pwsh          # use PowerShell 7; switch to 'powershell' for Windows PowerShell 5.1
+        
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Show versions
+        run: |
+          $PSVersionTable
+          whoami
+          [Environment]::Is64BitProcess       
