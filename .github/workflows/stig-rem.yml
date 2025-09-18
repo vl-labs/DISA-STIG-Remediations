@@ -16,7 +16,7 @@ jobs:
     runs-on: [VLABR1]
     defaults:
       run:
-        shell: pwsh          # use PowerShell 7; switch to 'powershell' for Windows PowerShell 5.1
+        shell: powershell # use PowerShell 7; switch to 'powershell' for Windows PowerShell 5.1
         
     steps:
       - name: Checkout
