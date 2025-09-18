@@ -1,9 +1,5 @@
 name: DISA-STIG-Remediation
 on: workflow_dispatch
-
-permissions:
-  id-token: write
-  contents: read
 jobs:
   my-job:
     runs-on: self-hosted
