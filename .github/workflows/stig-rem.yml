@@ -30,13 +30,19 @@ jobs:
 
       - name: Copy script to TEMP
         run: |
-          $source = Join-Path -Path $env:GITHUB_WORKSPACE -ChildPath ".github\scripts\STIG-ID-WN10-ALL.ps1"
-          $destFolder = "c:\stig-rem"
+          $repoRoot = $env:GITHUB_WORKSPACE
+          $source = Join-Path -Path $$repoRoot -ChildPath ".github\scripts\STIG-ID-WN10-ALL.ps1"
+          $destFolder = "C:\stig-rem"
           $dest = Join-Path -Path $destFolder -ChildPath "STIG-ID-WN10-ALL.ps1"
                   
           if (-not (Test-Path $source)) {
             throw "Script not found at $source"
             New-Item -Path $destFolder -ItemType Directory -Force | Out-Null
+          }
+
+          # Validate source exists
+          if (-not (Test-Path $source)) {
+              throw "❌ Script not found at $source"
           }
           
           Copy-Item -Path $source -Destination $dest -Force
