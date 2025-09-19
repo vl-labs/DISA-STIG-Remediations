@@ -42,7 +42,7 @@ jobs:
 
           # Validate source exists
           if (-not (Test-Path $dest)) {
-              throw "destination noe found $dest"
+              #throw "destination not found $dest"
               New-Item -Path $destFolder -ItemType Directory -Force | Out-Null
           }
           
