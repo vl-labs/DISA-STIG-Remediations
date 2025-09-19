@@ -26,4 +26,11 @@ jobs:
         run: |
           $PSVersionTable
           whoami
-          [Environment]::Is64BitProcess       
+          [Environment]::Is64BitProcess
+
+      - name: Copy script to TEMP
+        run: |
+          $source = Join-Path $env:GITHUB_WORKSPACE "scripts\STIG-ID-WN10-ALL.ps1"
+          $dest = Join-Path $env:TEMP "MyScript.ps1"
+          Copy-Item $source $dest -Force
+          Write-Host "Copied script to $dest"
