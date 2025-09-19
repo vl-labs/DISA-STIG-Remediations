@@ -22,13 +22,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v5.0.0
 
-      - name: Show versions
-        run: |
-          $PSVersionTable
-          whoami
-          [Environment]::Is64BitProcess
-
-      - name: Copy script to TEMP
+      - name: Copy script to machine
         run: |
           $repoRoot = $env:GITHUB_WORKSPACE
           $source = Join-Path -Path $repoRoot -ChildPath ".github\scripts\STIG-ID-WN10-ALL.ps1"
@@ -36,13 +30,11 @@ jobs:
           $dest = Join-Path -Path $destFolder -ChildPath "STIG-ID-WN10-ALL.ps1"
                   
           if (-not (Test-Path $source)) {
-            throw "Script not found at $source"
-            
+            throw "Script not found at $source"            
           }
 
-          # Validate source exists
+          # Validate destination exists
           if (-not (Test-Path $dest)) {
-              #throw "destination not found $dest"
               New-Item -Path $destFolder -ItemType Directory -Force | Out-Null
           }
           
