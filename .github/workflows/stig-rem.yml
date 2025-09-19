@@ -30,7 +30,10 @@ jobs:
 
       - name: Copy script to TEMP
         run: |
-          $source = Join-Path "scripts\STIG-ID-WN10-ALL.ps1"
+          $source = Join-Path ".github\scripts\STIG-ID-WN10-ALL.ps1"
           $dest = Join-Path $env:TEMP "MyScript.ps1"
+          if (-not (Test-Path $source)) {
+            throw "Script not found at $source"
+          }
           Copy-Item $source $dest -Force
           Write-Host "Copied script to $dest"
