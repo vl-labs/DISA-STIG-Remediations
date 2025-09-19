@@ -35,7 +35,8 @@ jobs:
           
           if (-not (Test-Path $source)) {
             throw "Script not found at $source"
+            New-Item -Path $destFolder -ItemType Directory -Force | Out-Null
           }
           
-          Copy-Item $source $dest -Force
+          Copy-Item -Path $source -Destination $dest -Force
           Write-Host "Copied script to $dest"
