@@ -31,7 +31,7 @@ jobs:
       - name: Copy script to TEMP
         run: |
           $repoRoot = $env:GITHUB_WORKSPACE
-          $source = Join-Path -Path $$repoRoot -ChildPath ".github\scripts\STIG-ID-WN10-ALL.ps1"
+          $source = Join-Path -Path $repoRoot -ChildPath ".github\scripts\STIG-ID-WN10-ALL.ps1"
           $destFolder = "C:\stig-rem"
           $dest = Join-Path -Path $destFolder -ChildPath "STIG-ID-WN10-ALL.ps1"
                   
