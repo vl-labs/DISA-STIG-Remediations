@@ -37,12 +37,13 @@ jobs:
                   
           if (-not (Test-Path $source)) {
             throw "Script not found at $source"
-            New-Item -Path $destFolder -ItemType Directory -Force | Out-Null
+            
           }
 
           # Validate source exists
-          if (-not (Test-Path $source)) {
-              throw "❌ Script not found at $source"
+          if (-not (Test-Path $dest)) {
+              throw "destination noe found $dest"
+              New-Item -Path $destFolder -ItemType Directory -Force | Out-Null
           }
           
           Copy-Item -Path $source -Destination $dest -Force
