@@ -6,13 +6,7 @@ on:
   workflow_dispatch:
   
 jobs:
-  my-job:
-    runs-on: [VLABR1]
-    steps:
-      - name: my-step
-        run: echo "Hello World!" 
-
-  run-powershell:
+  Copy-Script:
     runs-on: [VLABR1]
     defaults:
       run:
